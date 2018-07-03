@@ -1,0 +1,11 @@
+{
+  "name": "mouse-movement",
+  "version": "1.0.0",
+  "description": "Try to catch the square! ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Liam Mahoney",
+  "license": "ISC"
+}
