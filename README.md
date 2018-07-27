@@ -2,7 +2,7 @@
 
 Play here: <a href="http://www.liammahoney.me/mouse_movement">liammahoney.me/mouse_movement</a>
 
-<h2>Tech Used<h2>
+<h2>Tech Used</h2>
 <ul>
   <li>JavaScript</li>
   <li>HTML/CSS</li>
