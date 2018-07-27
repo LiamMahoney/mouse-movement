@@ -2,7 +2,7 @@
 
 Play here: liammahoney.me/mouse_movement
 
-# Tech Used
+<h2>Tech Used<h2>
 <ul>
   <li>JavaScript</li>
   <li>HTML/CSS</li>
