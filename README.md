@@ -1,6 +1,6 @@
 # Mouse-Movement
 
-Play here: <a href="http://www.liammahoney.me/mouse_movement">liammahoney.me/mouse_movement</a>
+Play here: <a href="https://www.liammahoney.me/mouse_movement/index.html">liammahoney.me/mouse_movement/index.html</a>
 
 <h2>Tech Used</h2>
 <ul>
