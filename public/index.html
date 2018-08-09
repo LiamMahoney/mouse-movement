@@ -1,0 +1,45 @@
+<html>
+</head>
+  <link rel="icon" href="good.png">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<body onload="initialize()">
+  <div id="container">
+    <div id="enterScore" class="container hide">
+        <div class="scoreboard-container flex-center">
+          <div id="scoreRow" class="flex-row">
+            <div id="score" class="text">SCORE: </div><div id="scoreTime"></div>
+          </div>
+          <div id="nameRow" class="flex-row">
+            <div class="text">ENTER NAME:</div>
+            <input maxlength="10" id="user-name" class="enter-name" type="text"></input>
+          </div>
+          <div class="flex-row">
+            <button class="scoreboard-button" onclick="submitScore()">SUBMIT SCORE</button>
+            <button class="scoreboard-button" onclick="refreshPage()">PLAY AGAIN</button>
+          </div>
+        </div>
+      </div>
+      <div id="highScores" class="container hide">
+        <div class="scoreboard-container">
+          <div class="row row-top">
+            <div class="tab">HIGH SCORES</div>
+          </div>
+          <div class="row row-middle flex-col">
+            <table id="scores">
+            </table>
+          </div>
+          <div class="row row-bottom">
+            <button class="scoreboard-button" onclick="refreshPage()">PLAY AGAIN</button>
+          </div>
+        </div>
+      </div>
+    <div id="timer" class="hide"></div>
+    <button id="startButton" class="button" onclick=gameStart()>START</button>
+    <div id="box" class="hide" onmouseover="gameOver()"></div>
+  </div>
+
+  <script src="box.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
