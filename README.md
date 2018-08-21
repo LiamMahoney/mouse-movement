@@ -11,7 +11,6 @@ Play here: <a href="https://www.liammahoney.me/mouse_movement/index.html">liamma
     <li>express</li>
     <li>body-parser</li>
     <li>sqlite3</li>
-    <li>nodemailer</li></ul>
   </ul>
   
 
