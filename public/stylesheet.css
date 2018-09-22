@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+#box {
+  height:17px;
+  width: 17px;
+  /* background-color: green; */
+  color: green;
+  position: absolute;
+  border: 3px solid black;
+}
+#container {
+  height: 90%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+}
+#timer {
+  align-self: flex-start;
+  font-size: 1.7rem;
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  font-weight: 600;
+}
+.button {
+  background: none;
+  border: 3px solid black;
+  font-size: 3rem;
+  border-radius: 15px;
+  padding: 20px 40px 20px 40px;
+  cursor: pointer;
+}
+.button:focus {
+  outline: 0px;
+}
+.button:active {
+  padding: 16px 33px 16px 33px
+}
+.button:hover {
+  box-shadow: 0px 0px 8px 1px #ccc;
+}
+.hide {
+  display: none;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95%;
+  width: 95%;
+}
+.scoreboard-container {
+  width: 70%;
+  height: 500px;
+  max-width: 550px;
+  border: 3px solid black;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.row {
+  display: flex;
+}
+.row-top {
+  height: 60px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.row-middle {
+  flex: 1;
+  overflow: scroll;
+  margin: 0px 5px 20px 20px;
+  padding-right: 15px;
+  width: 90%;
+  align-items: center;
+}
+.row-bottom {
+  margin-bottom: 10px;
+  height: 50px;
+}
+
+.tab {
+  text-decoration: none;
+  color: black;
+  -webkit-appearance: none;
+  padding: 0px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+}
+.tab:focus {
+  outline: 0px;
+}
+#tab-left {
+  border-top: 0px;
+  border-left: 0px;
+  flex: 1;
+}
+.tab-left-selected {
+  border-radius: 15px 0px 0px 0px;
+  border-bottom: 0px;
+  border-right: 0;
+}
+.tab-left-notselected {
+  border-radius: 15px 0px 5px 0px;
+  border-bottom: 3px solid black;
+  border-right: 3px solid black;
+}
+.tab-left-notselected:hover {
+  cursor: pointer;
+}
+#tab-right {
+  border-top: 0px;
+  border-right: 0px;
+  flex: 1;
+}
+.tab-right-selected {
+  border-radius: 0px 15px 0px 0px;
+  border-left: 0px;
+  border-bottom: 0px;
+}
+.tab-right-notselected {
+  border-radius: 0px 15px 0px 5px;
+  border-bottom: 3px solid black;
+  border-left: 3px solid black;
+}
+.tab-right-notselected:hover {
+  cursor: pointer;
+}
+.hide {
+  display: none;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.enter-name {
+  height: 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 3px solid black;
+  margin-left: 10px;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+.enter-name:focus {
+  outline: none;
+}
+.flex-row {
+  display: flex;
+  align-items: center;
+  flex-direction:row;
+  margin-bottom: 60px;
+}
+.enterScore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.scoreboard-button {
+  background: none;
+  border: 3px solid black;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  padding: 10px 20px 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0px 10px 0px 10px;
+}
+.scoreboard-button:focus {
+  outline: 0px;
+}
+.scoreboard-button:active {
+  padding: 8px 16px 8px 16px
+}
+.scoreboard-button:hover {
+  box-shadow: 0px 0px 8px 1px #ccc;
+}
+#scoreTime {
+  font-size: 2.3rem;
+  margin-left: 10px;
+}
+.bottom-row{
+  align-self: flex-end;
+}
+#listScores {
+  height: 80%;
+}
+#scores {
+  width: 90%;
+  align-items: center;
+}
+.flex-col {
+  flex-direction: column;
+}
+.align-center {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.align-start {
+}
+.align-end {
+}
+.score-list {
+  margin: 5px;
+  min-height: 1.1rem;
+}
+.score-row {
+  text-align: center;
+}
