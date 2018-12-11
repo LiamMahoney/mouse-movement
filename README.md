@@ -18,7 +18,7 @@ Play here: <a href="https://liammahoney.me/mouse_movement/index.html">liammahone
     <li>body-parser</li>
     <li>sqlite3</li>
   </ul>
-  <h2>Main Algorithm</h2>
+<h2>Main Algorithm</h2>
 The driver of this game is a function that determines where the user's cursor is relative to the box. If the cursor is within x amount of pixels the box moves. Special cases are considered when the box is in a corner and when it is along the edge of the border. A hint of randomness is added to the box's movement to add an element of unpredictability to the movement.
   
 
