@@ -47,7 +47,6 @@ function mouseLeave() { //user loses
   getScores(listScores);
   document.getElementById("container").style.border = "3px solid red";
   document.getElementById("box").classList.add("hide");
-  //document.getElementById("highScores").classList.remove("hide");
   document.getElementById("timer").innerHTML="";
   clearInterval(timerInterval);
   
