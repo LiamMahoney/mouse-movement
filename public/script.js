@@ -4,19 +4,14 @@ var timerInterval;
 var startTime;
 // the user's score
 var score;
-// instance of box
-var box = new Box(document.getElementById("box"));
-// Top of the container of the game border
-var containerTop = document.getElementById("container").getBoundingClientRect().top;
-// Bottom of the container of the game border
-var containerBottom = document.getElementById("container").getBoundingClientRect().bottom;
-// Left of the container of the border
-var containerLeft = document.getElementById("container").getBoundingClientRect().left;
-// Right of the container of the border
-var containerRight = document.getElementById("container").getBoundingClientRect().right;
+// instance of the game engine
+let gameEngine;
+
 
 function initialize() {
+  var box = new Box(document.getElementById("box"));
   box.initialFunc();
+  gameEngine = new GameEngine(box);
   document.addEventListener('contextmenu', event => event.preventDefault()); //Doesn't appear to work
 }
 
@@ -25,241 +20,10 @@ function gameStart() {
   document.getElementById("startButton").classList.add("hide");
   document.getElementById("box").classList.remove("hide");
   document.getElementById("timer").classList.remove("hide");
-  document.getElementById("container").setAttribute("onmousemove", "mouseMove(event)"); //If not placed here mouseMove fires on start screen
-  document.getElementById("container").setAttribute("onmouseleave", "mouseLeave()");
+  document.getElementById("container").setAttribute("onmousemove", "gameEngine.movementDriver(event)"); //If not placed here mouseMove fires on start screen
+//document.getElementById("container").setAttribute("onmouseleave", "mouseLeave()");
   startTime = new Date().getTime()/2000;
   timerInterval = setInterval(updateTimer, 20);
-}
-
-//Determines where the mouse is relative to the box
-function mouseMove(event) {
-  var mouseX = event.clientX;
-  var mouseY = event.clientY;
-  var boxRect = document.getElementById("box").getBoundingClientRect()
-  var boxTop = boxRect.top;
-  var boxBottom = boxRect.bottom;
-  var boxLeft = boxRect.left;
-  var boxRight = boxRect.right;
-  var mouseInRange = false;
-  if ((boxLeft - 100 < mouseX && mouseX < boxRight + 100) && (boxTop - 100 < mouseY && mouseY < boxBottom + 100)) {
-    mouseInRange = true;
-  }
-  //Box is a long border of screen/div
-  if (boxTop <= containerTop + 40 || boxLeft <= containerLeft + 40 || boxRight >= containerRight - 40 || boxBottom >= containerBottom - 40) {
-    //Top left corner
-    if (boxTop < containerTop + 40 && boxLeft < containerLeft + 40) {
-      var b = boxTop - boxRight;
-      var yPrime = mouseX + b;
-      var val = yPrime - mouseY;
-      if (val < 0 && mouseY < boxTop + 120 && mouseX < boxLeft + 120) {
-        box.moveRight(40);
-      } else if (val >= 0 && mouseY < boxTop + 120 && mouseX < boxLeft + 120) {
-        box.moveDown(40);
-      }
-      //Top right corner
-    } else if (boxTop < containerTop + 40 && boxRight > containerRight - 40) {
-      var b = boxTop + boxRight;
-      var yPrime = (-1*mouseX) + b;
-      var val = yPrime - mouseY;
-      if (val < 0 && mouseY < boxTop + 120 && mouseX > boxRight - 120) {
-        box.moveLeft(40);
-      } else if (val >= 0 && mouseY < boxTop + 120 &&  mouseX > boxRight - 120) {
-        box.moveDown(40);
-      }
-      //Bottom right corner
-    } else if (boxBottom > containerBottom - 40 && boxRight > containerRight - 40) {
-      var b = boxTop - boxLeft;
-      var yPrime = mouseX + b;
-      var val = yPrime - mouseY;
-      if (val < 0 && mouseX > boxRight - 120 && mouseY > boxBottom - 120) {
-        box.moveUp(40);
-      } else if (val >= 0 && mouseX > boxRight - 120 && mouseY > boxBottom - 120) {
-        box.moveLeft(40);
-      }
-      //Bottom left corner
-    } else if (boxBottom > containerBottom - 40 && boxLeft < containerLeft + 40) {
-      var b = boxTop + boxRight;
-      var yPrime = (-1*mouseX) + b;
-      var val = yPrime - mouseY;
-      if (val < 0 && mouseY > boxBottom - 120 && mouseX < boxLeft + 120) {
-        box.moveUp(40);
-      } else if (val >= 0 && mouseY > boxBottom - 120 && mouseX < boxLeft + 120) {
-        box.moveRight(40);
-      }
-      //Along top of border
-    } else if (boxTop < containerTop + 40 && mouseInRange) {
-      if (mouseX > boxLeft + 10) {
-        var b = boxTop - boxRight;
-        var yPrime = mouseX + b;
-        var val = yPrime - mouseY;
-        if (val < 0) {
-          box.moveLeft(30);
-        } else if (val >= 0) {
-          box.moveLeft(30);
-          box.moveDown(30);
-        }
-      } else if (mouseX <= boxLeft + 10) {
-        var b = boxTop + boxRight;
-        var yPrime = (-1*mouseX) + b;
-        var val = yPrime - mouseY;
-        if (val < 0) {
-          box.moveRight(30);
-        } else if (val >= 0) {
-          box.moveDown(30);
-          box.moveRight(30);
-        }
-      }
-      //Along right of border TODO: random isn't working from bottom
-    } else if (boxRight > containerRight - 40 && mouseInRange) {
-      if (mouseY <= boxTop + 10) {
-        var b = boxTop - boxLeft;
-        var yPrime = mouseX + b;
-        var val = yPrime - mouseY;
-        if (val < 0 && mouseX > boxRight - 120 && mouseY > boxBottom - 120) {
-          box.moveLeft(30);
-        } else if (val >= 0 && mouseX > boxRight - 120 && mouseY > boxBottom - 120) {
-          box.moveLeft(30);
-          box.moveDown(30);
-        }
-      } else if (mouseY > boxTop + 10) {
-        var b = boxTop + boxRight;
-        var yPrime = (-1*mouseX) + b;
-        var val = yPrime - mouseY;
-        if (val < 0 && mouseY < boxTop + 120 && mouseX > boxRight - 120) {
-          box.moveUp(30);
-          box.moveLeft(30);
-        } else if (val >= 0 && mouseY < boxTop + 120 &&  mouseX > boxRight - 120) {
-          box.moveUp(30);
-        }
-      }
-      //Along bottom
-    } else if (boxBottom > containerBottom - 40 && mouseInRange) {
-      if (mouseX > boxLeft + 10) {
-        var b = boxTop + boxRight;
-        var yPrime = (-1*mouseX) + b;
-        var val = yPrime - mouseY;
-        if (val < 0 && mouseY > boxBottom - 120 && mouseX < boxLeft + 120) {
-          box.moveUp(30);
-          box.moveLeft(30);
-        } else if (val >= 0 && mouseY > boxBottom - 120 && mouseX < boxLeft + 120) {
-          box.moveLeft(30);
-        }
-      } else if (mouseX <= boxLeft + 10) {
-        var b = boxTop - boxLeft;
-        var yPrime = mouseX + b;
-        var val = yPrime - mouseY;
-        if (val < 0 && mouseX > boxRight - 120 && mouseY > boxBottom - 120) {
-          box.moveUp(30);
-          box.moveRight(30);
-        } else if (val >= 0 && mouseX > boxRight - 120 && mouseY > boxBottom - 120) {
-          box.moveRight(30);
-        }
-      }
-      //Along left
-    }  else if (boxLeft < containerLeft + 40 && mouseInRange) {
-      if (mouseY > boxTop + 10) {
-        var b = boxTop - boxRight;
-        var yPrime = mouseX + b;
-        var val = yPrime - mouseY;
-        if (val < 0 && mouseY < boxTop + 120 && mouseX < boxLeft + 120) {
-          box.moveUp(30);
-          box.moveRight(30);
-        } else if (val >= 0 && mouseY < boxTop + 120 && mouseX < boxLeft + 120) {
-          box.moveUp(30);
-        }
-      } else if (mouseY <= boxTop + 10) {
-        var b = boxTop + boxRight;
-        var yPrime = (-1*mouseX) + b;
-        var val = yPrime - mouseY;
-        if (val < 0 && mouseY > boxBottom - 120 && mouseX < boxLeft + 120) {
-          box.moveDown(30);
-        } else if (val >= 0 && mouseY > boxBottom - 120 && mouseX < boxLeft + 120) {
-          box.moveRight(30);
-          box.moveDown(30);
-        }
-      }
-    }
-    //Box is not along border of screen/div
-  } else {
-    //Mouse is in top left square
-    if ((boxTop - 100 < mouseY && mouseY < boxTop) && (boxLeft - 100 < mouseX && mouseX < boxLeft)) {
-      box.moveDown(30);
-      box.moveRight(30);
-      var temp = Math.random();
-      if (temp < .4) {
-        box.moveUp(30);
-      } else if (.4 < temp && temp < .8) {
-        box.moveLeft(30);
-      }
-    //Mouse is in square directly above box
-  } else if ((boxTop - 100 < mouseY && mouseY < boxTop) && (boxLeft < mouseX && mouseX < boxRight)) {
-      box.moveDown(30);
-      var temp = Math.random();
-      if (temp < .4) {
-        box.moveRight(30);
-      } else if (.4 < temp && temp < .8) {
-        box.moveLeft(30);
-      }
-    //Mouse is in top right square
-    } else if ((boxTop - 100 < mouseY && mouseY < boxTop) && (boxRight < mouseX && mouseX < boxRight + 100)) {
-      box.moveLeft(30);
-      box.moveDown(30);
-      var temp = Math.random();
-      if (temp < .4) {
-        box.moveRight(30);
-      } else if (.4 < temp < .8) {
-        box.moveUp(30);
-      }
-    //Mouse is in square directly to right of box
-    } else if ((boxTop < mouseY && mouseY < boxBottom) && (boxRight < mouseX && mouseX < boxRight + 100)) {
-      box.moveLeft(30);
-      var temp = Math.random();
-      if (temp < .4) {
-        box.moveUp(30);
-      } else if (.4 < temp && temp < .8) {
-        box.moveDown(30);
-      }
-    //Mouse is in bottom right square
-    } else if ((boxBottom < mouseY && mouseY < boxBottom + 100) && (boxRight < mouseX && mouseX < boxRight + 100)) {
-      box.moveLeft(30);
-      box.moveUp(30);
-      var temp = Math.random();
-      if (temp < .4) {
-        box.moveDown(30);
-      } else if (.4 < temp && temp < .8) {
-        box.moveRight(30);
-      }
-    //Mouse is in square directly below box
-    } else if ((boxBottom < mouseY && mouseY < boxBottom + 100) && (boxLeft < mouseX && mouseX < boxRight)) {
-      box.moveUp(30);
-      var temp = Math.random();
-      if (temp < .4) {
-        box.moveLeft(30);
-      } else if (.4 < temp && temp < .8) {
-        box.moveRight(30);
-      }
-    //Mouse is in bottom left square
-    } else if ((boxBottom < mouseY && mouseY < boxBottom + 100) && (boxLeft - 100 < mouseX && mouseX < boxLeft)) {
-      box.moveRight(30);
-      box.moveUp(30);
-      var temp = Math.random();
-      if (temp < .4) {
-        box.moveDown(30);
-      } else if (.4 < temp && temp < .8) {
-        box.moveLeft(30);
-      }
-    //Mouse is in square directly left of box
-    } else if ((boxTop < mouseY && mouseY < boxBottom) && (boxLeft - 100 < mouseX && mouseX < boxLeft)) {
-      box.moveRight(30);
-      var temp = Math.random();
-      if (temp < .4) {
-        box.moveUp(30);
-      } else if (.4 < temp && temp < .8) {
-        box.moveDown(30);
-      }
-    }
-  }
-
 }
 
 // Updates the correct time to show on the screen
@@ -310,7 +74,7 @@ function putScore(callback) {
         callback(xmlHttp.responseText);
       }
   }
-  xmlHttp.open("POST", './db/set', true); // true for asynchronous 
+  xmlHttp.open("POST", '../mouse_movement/db/set', true); // true for asynchronous 
   xmlHttp.setRequestHeader("Content-Type", "application/json");
   xmlHttp.send(JSON.stringify(
     {
@@ -318,7 +82,6 @@ function putScore(callback) {
     'score':score,
     }
   ));
-
 }
 
 //callback: funciton to invoke in callback of ajax request (once the data has been returned)
@@ -332,7 +95,7 @@ function getScores(callback) {
         console.log(xmlHttp.responseText);
       }
   }
-  xmlHttp.open("GET", './db/get', true); // true for asynchronous 
+  xmlHttp.open("GET", '../mouse_movement/db/get', true); // true for asynchronous 
   xmlHttp.send(null);
 }
 
