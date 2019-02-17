@@ -14,9 +14,6 @@ class GameEngine {
     containerLeft;
     containerRight;
 
-//TODO: need to change all variables listed above that are used below this line to have "this" in front of them
-//TODO: use let instead of var EVERYWEHRE
-
     /**
      * Creates an instance of the game engine. Needs the box to be 
      * passed in so the functinos can access it. Also sets the 
@@ -204,9 +201,9 @@ class GameEngine {
     topBorderMove() {
         if (this.mouseX > this.boxLeft + 10) {
             // mouse is to the right of the box
-            var b = this.boxTop - this.boxRight;
-            var yPrime = this.mouseX + b;
-            var val = yPrime - this.mouseY;
+            let b = this.boxTop - this.boxRight;
+            let yPrime = this.mouseX + b;
+            let val = yPrime - this.mouseY;
             if (val < 0) {
                 // mouse is below line
                 this.box.moveLeft(30);
@@ -217,9 +214,9 @@ class GameEngine {
             }
         } else if (this.mouseX <= this.boxLeft + 10) {
             //mouse is to the left of the box
-            var b = this.boxTop + this.boxRight;
-            var yPrime = (-1*this.mouseX) + b;
-            var val = yPrime - this.mouseY;
+            let b = this.boxTop + this.boxRight;
+            let yPrime = (-1*this.mouseX) + b;
+            let val = yPrime - this.mouseY;
             if (val < 0) {
                 // mouse is below line
                 this.box.moveRight(30);
@@ -239,9 +236,9 @@ class GameEngine {
     rightBorderMove() {
         if (this.mouseY <= this.boxTop + 10) {
             // mouse is above the box
-            var b = this.boxTop - this.boxLeft;
-            var yPrime = this.mouseX + b;
-            var val = yPrime - this.mouseY;
+            let b = this.boxTop - this.boxLeft;
+            let yPrime = this.mouseX + b;
+            let val = yPrime - this.mouseY;
             if (val < 0 && this.mouseX > this.boxRight - 120 && this.mouseY > this.boxBottom - 120) {
                 // mouse is below the line
                 this.box.moveLeft(30);
@@ -252,9 +249,9 @@ class GameEngine {
             }
         } else if (this.mouseY > this.boxTop + 10) {
             // mouse is below the box
-            var b = this.boxTop + this.boxRight;
-            var yPrime = (-1*this.mouseX) + b;
-            var val = yPrime - this.mouseY;
+            let b = this.boxTop + this.boxRight;
+            let yPrime = (-1*this.mouseX) + b;
+            let val = yPrime - this.mouseY;
             if (val < 0 && this.mouseY < this.boxTop + 120 && this.mouseX > this.boxRight - 120) {
                 // mouse is below line
                 this.box.moveUp(30);
@@ -275,9 +272,9 @@ class GameEngine {
     bottomBorderMove() {
         if (this.mouseX > this.boxLeft + 10) {
             // mouse is to the right of the box
-            var b = this.boxTop + this.boxRight;
-            var yPrime = (-1*this.mouseX) + b;
-            var val = yPrime - this.mouseY;
+            let b = this.boxTop + this.boxRight;
+            let yPrime = (-1*this.mouseX) + b;
+            let val = yPrime - this.mouseY;
             if (val < 0 && this.mouseY > this.boxBottom - 120 && this.mouseX < this.boxLeft + 120) {
                 // mouse is below line
                 this.box.moveUp(30);
@@ -288,9 +285,9 @@ class GameEngine {
             }
         } else if (this.mouseX <= this.boxLeft + 10) {
             // mouse is to the left of the box
-            var b = this.boxTop - this.boxLeft;
-            var yPrime = this.mouseX + b;
-            var val = yPrime - this.mouseY;
+            let b = this.boxTop - this.boxLeft;
+            let yPrime = this.mouseX + b;
+            let val = yPrime - this.mouseY;
             if (val < 0 && this.mouseX > this.boxRight - 120 && this.mouseY > this.boxBottom - 120) {
                 // mouse is below line
                 this.box.moveUp(30);
@@ -311,9 +308,9 @@ class GameEngine {
     leftBorderMove() {
         if (this.mouseY > this.boxTop + 10) {
             // mouse is in bottom half of extended box
-            var b = this.boxTop - this.boxRight;
-            var yPrime = this.mouseX + b;
-            var val = yPrime - this.mouseY;
+            let b = this.boxTop - this.boxRight;
+            let yPrime = this.mouseX + b;
+            let val = yPrime - this.mouseY;
             if (val < 0 && this.mouseY < this.boxTop + 120 && this.mouseX < this.boxLeft + 120) {
                 // mouse is below line
                 this.box.moveUp(30);
@@ -324,9 +321,9 @@ class GameEngine {
             }
         } else if (this.mouseY <= this.boxTop + 10) {
             // mouse is in top half of extended box
-            var b = this.boxTop + this.boxRight;
-            var yPrime = (-1*this.mouseX) + b;
-            var val = yPrime - this.mouseY;
+            let b = this.boxTop + this.boxRight;
+            let yPrime = (-1*this.mouseX) + b;
+            let val = yPrime - this.mouseY;
             if (val < 0 && this.mouseY > this.boxBottom - 120 && this.mouseX < this.boxLeft + 120) {
                 // mouse is below line
                 this.box.moveDown(30);
@@ -347,7 +344,7 @@ class GameEngine {
     box1Move() {
         this.box.moveDown(30);
         this.box.moveRight(30);
-        var temp = Math.random();
+        let temp = Math.random();
         if (temp < .4) {
             this.box.moveUp(30);
         } else if (.4 < temp && temp < .8) {
@@ -363,7 +360,7 @@ class GameEngine {
      */
     box2Move() {
         this.box.moveDown(30);
-        var temp = Math.random();
+        let temp = Math.random();
         if (temp < .4) {
             this.box.moveRight(30);
         } else if (.4 < temp && temp < .8) {
@@ -380,7 +377,7 @@ class GameEngine {
     box3Move() {
         this.box.moveLeft(30);
         this.box.moveDown(30);
-        var temp = Math.random();
+        let temp = Math.random();
         if (temp < .4) {
             this.box.moveRight(30);
         } else if (.4 < temp < .8) {
@@ -396,7 +393,7 @@ class GameEngine {
      */
     box4Move() {
         this.box.moveLeft(30);
-        var temp = Math.random();
+        let temp = Math.random();
         if (temp < .4) {
             this.box.moveUp(30);
         } else if (.4 < temp && temp < .8) {
@@ -413,7 +410,7 @@ class GameEngine {
     box5Move() {
         this.box.moveLeft(30);
         this.box.moveUp(30);
-        var temp = Math.random();
+        let temp = Math.random();
         if (temp < .4) {
             this.box.moveDown(30);
         } else if (.4 < temp && temp < .8) {
@@ -429,7 +426,7 @@ class GameEngine {
      */
     box6Move() {
         this.box.moveUp(30);
-        var temp = Math.random();
+        let temp = Math.random();
         if (temp < .4) {
             this.box.moveLeft(30);
         } else if (.4 < temp && temp < .8) {
@@ -446,7 +443,7 @@ class GameEngine {
     box7Move() {
         this.box.moveRight(30);
         this.box.moveUp(30);
-        var temp = Math.random();
+        let temp = Math.random();
         if (temp < .4) {
             this.box.moveDown(30);
         } else if (.4 < temp && temp < .8) {
@@ -462,7 +459,7 @@ class GameEngine {
      */
     box8Move() {
         this.box.moveRight(30);
-        var temp = Math.random();
+        let temp = Math.random();
         if (temp < .4) {
             this.box.moveUp(30);
         } else if (.4 < temp && temp < .8) {
