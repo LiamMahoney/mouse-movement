@@ -11,6 +11,7 @@ body {
   margin: 0px;
   font-family: 'Roboto', sans-serif;
   overflow: hidden;
+  background-color: #fafafa;
 }
 #box {
   height:17px;

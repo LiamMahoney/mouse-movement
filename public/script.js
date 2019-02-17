@@ -310,7 +310,7 @@ function putScore(callback) {
         callback(xmlHttp.responseText);
       }
   }
-  xmlHttp.open("POST", '../mouse_movement/db/set', true); // true for asynchronous 
+  xmlHttp.open("POST", './db/set', true); // true for asynchronous 
   xmlHttp.setRequestHeader("Content-Type", "application/json");
   xmlHttp.send(JSON.stringify(
     {
@@ -332,7 +332,7 @@ function getScores(callback) {
         console.log(xmlHttp.responseText);
       }
   }
-  xmlHttp.open("GET", '../mouse_movement/db/get', true); // true for asynchronous 
+  xmlHttp.open("GET", './db/get', true); // true for asynchronous 
   xmlHttp.send(null);
 }
 

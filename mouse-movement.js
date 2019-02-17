@@ -6,9 +6,7 @@ let app = express();
 
 app.use(bodyParser.json());
 
-app.use('/', express.static('public'));
-
-app.get('/db/get', (req, res, next) => {
+app.get('/get', (req, res, next) => {
     let db = new sqlite3.Database(path.join(__dirname,'db/scores.db'));
     db.all("SELECT name, score FROM scores ORDER BY score ASC LIMIT 25", (err, row) => {
         if (err) {
@@ -20,7 +18,7 @@ app.get('/db/get', (req, res, next) => {
     });
 }); 
 
-app.post('/db/set', (req, res, next) => {
+app.post('/set', (req, res, next) => {
     let db = new sqlite3.Database(path.join(__dirname, 'db/scores.db'));
     db.run(`INSERT INTO scores (name, score) VALUES ('${req.body.name}', ${req.body.score});`, [], (err) => {
         if (err) {
