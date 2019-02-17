@@ -92,7 +92,7 @@ function getScores(callback) {
         document.getElementById("highScores").classList.remove("hide");
         callback(xmlHttp.responseText);
       } else {
-        console.log(xmlHttp.responseText);
+        // TODO: error handling
       }
   }
   xmlHttp.open("GET", '../db/get', true); // true for asynchronous 
