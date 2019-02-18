@@ -2,8 +2,9 @@
 <head>
   <link rel="icon" href="good.png">
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <title>mouse-movement</title>
 </head>
-<body onload="initialize()">
+<body onload="initializer()">
   <div id="container">
     <div id="enterScore" class="container hide">
         <div class="scoreboard-container flex-center">
@@ -15,8 +16,8 @@
             <input maxlength="10" id="user-name" class="enter-name" type="text"></input>
           </div>
           <div class="flex-row">
-            <button class="scoreboard-button" onclick="submitScore()">SUBMIT SCORE</button>
-            <button class="scoreboard-button" onclick="refreshPage()">PLAY AGAIN</button>
+            <button id="submit-score-button"class="scoreboard-button">SUBMIT SCORE</button>
+            <button id="scoreboard-button" class="scoreboard-button"">PLAY AGAIN</button>
           </div>
         </div>
       </div>
@@ -30,18 +31,18 @@
             </table>
           </div>
           <div class="row row-bottom">
-            <button class="scoreboard-button" onclick="refreshPage()">PLAY AGAIN</button>
+            <button id="scoreboard-button">PLAY AGAIN</button>
           </div>
         </div>
       </div>
     <div id="timer" class="hide"></div>
-    <button id="startButton" class="button" onclick=gameStart()>START</button>
-    <div id="box" class="hide" onmouseover="gameOver()"></div>
+    <button id="startButton" class="button">START</button>
+    <div id="box" class="hide"></div>
   </div>
 
   <script src="box.js"></script>
-  <script src="script.js"></script>
-  <script src="gameEngine.js">
-  </script>
+  <script src="main.js"></script>
+  <script src="gameEngine.js"></script>
+  <script src="gameController.js"></script>
 </body>
 </html>
