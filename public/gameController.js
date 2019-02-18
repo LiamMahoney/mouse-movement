@@ -54,7 +54,9 @@ class GameController {
 
     mouseLeave() {
         document.getElementById("container").removeAttribute("onmouseleave");
-        this.getScores(listScores);
+        this.getScores(() => {
+            this.listScores();
+        });
         document.getElementById("container").style.border = "3px solid red";
         document.getElementById("box").classList.add("hide");
         document.getElementById("timer").innerHTML="";
@@ -67,7 +69,9 @@ class GameController {
 
     submitScore() {
         this.putScore((response) => {
-            this.getScores(listScores);
+            this.getScores(() => {
+                this.listScores();
+            });
             document.getElementById("enterScore").classList.add("hide");
         });
     }
