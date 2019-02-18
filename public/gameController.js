@@ -130,7 +130,7 @@ class GameController {
     initializeScores() {
         document.getElementById("scores").innerHTML = `         
         <tr>
-            th>Rank</th>
+            <th>Rank</th>
             <th>Name</th>
             <th>Time</th>
         </tr>`;
