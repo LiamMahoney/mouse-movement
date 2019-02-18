@@ -77,7 +77,7 @@ class GameController {
         let name = document.getElementById("user-name").value;
         xmlHttp.onreadystatechange = function() { 
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-                this.callback(xmlHttp.responseText);
+                callback(xmlHttp.responseText);
             }
         }
 
@@ -97,7 +97,7 @@ class GameController {
         xmlHttp.onreadystatechange = function() { 
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
                 document.getElementById("highScores").classList.remove("hide");
-                this.callback(xmlHttp.responseText);
+                callback(xmlHttp.responseText);
             } else {
                 // TODO: error handling
             }
