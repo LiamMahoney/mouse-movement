@@ -1,5 +1,11 @@
+// GameController instance
 let gameController;
 
+/**
+ * Called when the body has loaded. Sets up events for specific actions.
+ * Anonymous functions are needed to keep the instance scope the way 
+ * I want it to be. 
+ */
 function initializer() {
     gameController = new GameController();
     document.getElementById("scoreboard-button").addEventListener('click', () => {
