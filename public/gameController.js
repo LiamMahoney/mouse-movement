@@ -54,7 +54,7 @@ class GameController {
 
     mouseLeave() {
         document.getElementById("container").removeAttribute("onmouseleave");
-        this.getScores(this.listScores);
+        this.getScores(listScores);
         document.getElementById("container").style.border = "3px solid red";
         document.getElementById("box").classList.add("hide");
         document.getElementById("timer").innerHTML="";
@@ -67,7 +67,7 @@ class GameController {
 
     submitScore() {
         this.putScore((response) => {
-            this.getScores(this.listScores);
+            this.getScores(listScores);
             document.getElementById("enterScore").classList.add("hide");
         });
     }
@@ -108,15 +108,6 @@ class GameController {
         xmlHttp.send(null);
     }
 
-    initializeScores() {
-        document.getElementById("scores").innerHTML = `         
-        <tr>
-            th>Rank</th>
-            <th>Name</th>
-            <th>Time</th>
-        </tr>`;
-    }
-
     listScores(scores) {
         this.initializeScores();
         scores = JSON.parse(scores);
@@ -128,5 +119,14 @@ class GameController {
                 <td>${scores[i].score}</td>
             </tr>`;
         }
+    }
+
+    initializeScores() {
+        document.getElementById("scores").innerHTML = `         
+        <tr>
+            th>Rank</th>
+            <th>Name</th>
+            <th>Time</th>
+        </tr>`;
     }
 }
