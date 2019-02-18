@@ -5,6 +5,9 @@ function initializer() {
     document.getElementById("scoreboard-button").addEventListener('click', () => {
         gameController.refreshPage();
     });
+    document.getElementById("scoreboard-again-button").addEventListener('click', () => {
+        gameController.refreshPage();
+    });
     document.getElementById("startButton").addEventListener('click', () => {
         gameController.gameStart();
     });
