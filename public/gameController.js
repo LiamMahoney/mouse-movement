@@ -45,7 +45,9 @@ class GameController {
     
     userLost() {
         document.getElementById("container").removeAttribute("onmouseleave");
-        this.getScores(this.listScores);
+        this.getScores((scores) => {
+            this.listScores(scores); 
+        });
         document.getElementById("container").style.border = "3px solid red";
         document.getElementById("box").classList.add("hide");
         document.getElementById("timer").innerHTML="";
@@ -54,8 +56,8 @@ class GameController {
 
     mouseLeave() {
         document.getElementById("container").removeAttribute("onmouseleave");
-        this.getScores(() => {
-            this.listScores();
+        this.getScores((scores) => {
+            this.listScores(scores);
         });
         document.getElementById("container").style.border = "3px solid red";
         document.getElementById("box").classList.add("hide");
@@ -70,7 +72,7 @@ class GameController {
     submitScore() {
         this.putScore((response) => {
             this.getScores(() => {
-                this.listScores();
+                this.listScores(response);
             });
             document.getElementById("enterScore").classList.add("hide");
         });
