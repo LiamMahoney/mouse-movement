@@ -19,8 +19,15 @@
     <li>sqlite3</li>
   </ul>
 </ul>
-<h2>Main Algorithm</h2>
-The driver of this game is a function that determines where the user's cursor is relative to the box. If the cursor is within 100 pixels the box moves. Special cases are considered when the box is in a corner and when it is along the edge of the border. A hint of randomness is added to the box's movement to add an element of unpredictability to the movement.
+<h2>Algorithm</h2>
+The program considers two major cases with respect to the user's mouse and the box when deciding what direction to move the box. 
+<ul>
+  <li><h2>Normal Movement</h2></li>
+      <img src="http://mouse-movement.liammahoney.me/general-mouse-detection.png">
+      <p>A normal movement situation is anytime the box is NOT within 40 pixels of any border edge, and the user's mouse is within 100 pixels of the box.</p>
+  <p>The program decides which movement(s) to make based on which box the user's mouse falls into.</p>
+
+</ul>
   
 
         
