@@ -1,7 +1,7 @@
 # Mouse-Movement
 
 <a href="https://mouse-movement.liammahoney.me/">Play here</a><br>
-<a href="https://mouse-movement.liammahoney.me/docs">Check out the docs</a><br>
+<a href="https://mouse-movement.liammahoney.me/docs">Check out the docs here</a><br>
 <img src="https://liammahoney.me/pics/mouse-movement.gif">
 <h2>Rules</h2>
 <ul>
