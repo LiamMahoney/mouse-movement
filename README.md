@@ -1,6 +1,7 @@
 # Mouse-Movement
 
 <a href="https://mouse-movement.liammahoney.me/">Play here</a><br>
+<a href="https://mouse-movement.liammahoney.me/docs">Check out the docs</a><br>
 <img src="https://liammahoney.me/pics/mouse-movement.gif">
 <h2>Rules</h2>
 <ul>
@@ -19,20 +20,21 @@
     <li>sqlite3</li>
   </ul>
 </ul>
-<h2>Algorithm</h2>
-The program considers two major cases with respect to the user's mouse and the box when deciding what direction to move the box. 
-<h4>Normal case</h4>
+<h2>Box Moving Algorithm (GameEngine class)</h2>
+<p>The program considers two major cases with respect to the user's mouse and the box when deciding what direction to move the box.</p> 
+<h4>Normal Case</h4>
 <img width="500" src="http://mouse-movement.liammahoney.me/general-mouse-detection.png">
-<p>A normal situation is anytime the box is NOT within 40 pixels of any border edge, and the user's mouse is within 100 pixels of the box.</p>
-<p>The program decides which movement(s) to make based on which box the user's mouse falls into. This is determined by extending the box's borders out 100 pixels and determining if the user's mouse falls within that.</p>
-<p>The box will move in the opposite direction of the user's mouse, as well as a 80% chance of moving in directions perpindicular to the user's mouse. For example, if a user's mouse is in zone 8, the box will move to the right, and there is a 40% chance of the box also moving up, and another 40% chance of the box also moving down.</p>
-<h4>Border Movement</h4>
-<p>A border movement situation is anytime any part of the box is within 40 pixels of any border edge. There are two cases within a border movement case: a case when the box is within 40 pixels of one border, or when the box is within 40 pixels of two boxes (a corner).</p>
+<p>A normal case is anytime the box is NOT within 40 pixels of any border edge, and the user's mouse is within 100 pixels of the box.</p>
+<p>The program decides which movement to make based on which box the user's mouse falls into. This is determined by extending the box's borders out 100 pixels and determining if the user's mouse falls within that.</p>
+<p>The box will move in the opposite direction of the user's mouse. Additionally, there is an 80% chance of moving in directions perpindicular to the user's mouse. For example, if a user's mouse is in zone 8, there is a 40% chance the box will  move up and to the right, a 40% chance of the box will move down and to the right, and a 20% chance the box just moves right.</p>
+<h4>Border Case</h4>
+<p>A border movement situation is anytime part of the box is within 40 pixels of any border edge and the user's mouse is within 100 pixels of any edge of the box. There are two cases within a border movement case: a case when the box is within 40 pixels of <b>one</b> border, or when the box is within 40 pixels of <b>two</b> borders (a corner).</p>
 <p>Both situations figure out where exactly the user's mouse is relative to the box by drawing a line through the box's opposing corners, and then determining whether the user's mouse is above or below that line. If the user's mouse is below that line it only moves in the opposite direciton. If the user's mouse is above that line, the box moves in the opposite direciton as well as the opposite direction of the border, attempting to move it away from the border as fast as possible.
 <h6>General Border Case</h6>
 <img width="700" src="https://mouse-movement.liammahoney.me/border-situation.png">
-
-
-  
-
-        
+<p>The program decides which direction to move the box when it's along a border by considering which zone the user's mouse is in. Here the program is prioritizing getting the box off of the border, as it's harder to catch the box in open space than along the border edge. </p>
+<p>The user's mouse is detected by first figuring out which half of the box the mouse is on, and then extending a line through opposing corners towards the user's mouse. This line makes the program determine if it should move along the border, or attempt to push the box away from the border. For example, if the user's mouse is in zone 2 shown above, we only want the box to move right along the border. If it were to move down it may make it easier for the user to catch the box.</p>
+<h6>Corner Case</h6>
+<img width="700" src="https://mouse-movement.liammahoney.me/corner-situation.png">
+<p>A corner case is anytime the box is within 40 pixels of two borders, which would be in a corner.</p>
+<p>The program decides what move to make by extending a line from the box's corners to determine if the user's mouse is above or below that line. Although similar to the general border case, a corner case only has two possible scenarios, and it prioritizes getting out of the corner by moving much faster out of the corner than in any other move. The thought here is that it would be easier to catch the box in a corner, so the box should get out of the corner as fast as possible.</p>
