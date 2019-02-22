@@ -23,7 +23,7 @@
 The program considers two major cases with respect to the user's mouse and the box when deciding what direction to move the box. 
 <ul>
   <li><h2>Normal Movement</h2></li>
-      <img style="width: 500px; height: auto;" src="http://mouse-movement.liammahoney.me/general-mouse-detection.png">
+      <img width="500" src="http://mouse-movement.liammahoney.me/general-mouse-detection.png">
       <p>A normal movement situation is anytime the box is NOT within 40 pixels of any border edge, and the user's mouse is within 100 pixels of the box.</p>
   <p>The program decides which movement(s) to make based on which box the user's mouse falls into.</p>
 
